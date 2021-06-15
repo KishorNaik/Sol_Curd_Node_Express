@@ -3,7 +3,6 @@ import { HttpException } from "../Config/Middlewares/Custom/ExceptionMiddlewareE
 import BaseController from "../Lib/BaseControllers/BaseController";
 import UserModel from "../Models/UserModel";
 import { IUserService } from "../Services/UserService";
-import asyncHandler from "express-async-handler"
 
 export default class UserController extends BaseController{
     
@@ -37,14 +36,14 @@ export default class UserController extends BaseController{
          }
          catch(ex)
          {
-            console.log("UserController:Exception",ex.message);
+            //console.log("UserController:Exception",ex.message);
             next(new HttpException(500,ex.message));
             //response.status(500).json({error:"something went wrong"});
          }
     }
 
    
-    private async CreateUsersAsync(request:express.Request,response:express.Response): Promise<void>{
+    private async CreateUsersAsync(request:express.Request,response:express.Response,next:express.NextFunction): Promise<void>{
         try
         {
             let userModel:UserModel=request.body;
@@ -53,11 +52,12 @@ export default class UserController extends BaseController{
             response.status(200).json(userIdentity);
         }
         catch(ex){
-            response.status(500).json({error:"something went wrong"})
+            //response.status(500).json({error:"something went wrong"})
+            next(new HttpException(500,ex.message));
         }
     }
 
-    private async UpdateUserAsync(request:express.Request,response:express.Response): Promise<void>{
+    private async UpdateUserAsync(request:express.Request,response:express.Response,next:express.NextFunction): Promise<void>{
         try
         {
             let userModel:UserModel=request.body;
@@ -73,11 +73,12 @@ export default class UserController extends BaseController{
             
         }
         catch(ex){
-            response.status(500).json({error:"something went wrong"})
+            //response.status(500).json({error:"something went wrong"});
+            next(new HttpException(500,ex.message));
         }
     }
 
-    private async DeleteUserAsync(request:express.Request,response:express.Response): Promise<void>{
+    private async DeleteUserAsync(request:express.Request,response:express.Response,next:express.NextFunction): Promise<void>{
         try
         {
             let userModel:UserModel=request.body;
@@ -93,7 +94,8 @@ export default class UserController extends BaseController{
             
         }
         catch(ex){
-            response.status(500).json({error:"something went wrong"})
+            //response.status(500).json({error:"something went wrong"})
+            next(new HttpException(500,ex.message));
         }
     }
 

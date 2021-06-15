@@ -57,5 +57,11 @@ Step 6:
 Build and compile script. convert code .ts code .js and copy file to dist folder.
  npm run ts-compile
 
+Step 7: Enable TCP/Ip for Sql Connection
+7.1
+Open 'Sql Server Configuration Manager'-> Select 'Sql Server Network Configuration' -> Select 'Protocol for MSSQLServer' -> SELECT 'TCP/IP' -> double click -> Select Option 'Enabled' -> Set as 'Yes';
+
+7.2 
+Go to 'Sql Server Service'-> Restart 'Sql Server'
 
 

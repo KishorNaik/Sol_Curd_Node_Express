@@ -1,0 +1,61 @@
+Set Debug or Run the Node in Visual Studio Code.
+Press F1-> type "Toggle Auto Attach" -> Select Smart.
+
+
+Step 1:
+To initialize the project
+
+Command:
+Cd D:\Practice\Javascript\MySelf\Day3
+npm init -y
+
+this will create a package.json file for you.
+
+Step 2:
+install required Dependencies
+ npm install --save-dev typescript
+ npm install --save-dev express
+
+
+ npm i --save-dev @types/node @types/express
+ npm i --save-dev ts-node-dev
+
+ npm install --save-dev body-parser
+
+// DI
+ npm install --save-dev bottlejs
+
+// Sql and Linq
+npm install --save-dev mssql msnodesqlv8 linq @types/mssql
+
+
+Step 3:
+Initialize TypeScript in Node.js, it will create tsconfig.json file
+npx tsc --init [Check file]
+
+Step 4:
+To run this code we have to add a start script in the package.json file
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node-dev --respawn --pretty --transpile-only ./src/Program.ts",
+    "debug": "ts-node-dev --inspect=4321 --pretty --transpile-only ./src/Program.ts",
+    "ts-compile":"tsc"
+  }
+
+Step 5:
+  6.1 Now on the command line run the following command
+  npm run start
+  6.2 Debug
+    Go to package.json file, there is Debug link highlight, click on Debug Link and Select debug configuration.
+    Set breakpoint and it will load the debug in VS Code.
+
+    OR
+    type command
+    npm run debug
+
+Step 6:
+Build and compile script. convert code .ts code .js and copy file to dist folder.
+ npm run ts-compile
+
+
+

@@ -1,0 +1,30 @@
+###
+POST http://localhost:3000/api/user/getallusers
+Content-Type: application/json
+
+###
+POST http://localhost:3000/api/user/createuser
+Content-Type: application/json
+
+{
+    "FirstName":"Eshaan",
+    "LastName":"Naik"
+}
+
+###
+POST http://localhost:3000/api/user/updateuser
+Content-Type: application/json
+
+{
+    "UserIdentity":"F0863AFF-7602-4B79-96E8-ECD59A808194",
+    "FirstName":"Yogesh",
+    "LastName":"Naik"
+}
+
+###
+POST http://localhost:3000/api/user/deleteuser
+Content-Type: application/json
+
+{
+    "UserIdentity":"F0863AFF-7602-4B79-96E8-ECD59A808194"
+}

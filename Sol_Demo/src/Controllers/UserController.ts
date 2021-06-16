@@ -26,8 +26,8 @@ export default class UserController extends BaseController{
 
     protected InitializeRoutes() {
         this.router.post(`${this.routePath}/getallusers`,this.GetAllUsersAsync.bind(this));
-        this.router.post(`${this.routePath}/createuser`,this.userValidation.firstNameValidation(),this.userValidation.lastNameValidation(),this.CreateUsersAsync.bind(this));
-        this.router.post(`${this.routePath}/updateuser`,this.userValidation.firstNameValidation(),this.userValidation.lastNameValidation(),this.UpdateUserAsync.bind(this));
+        this.router.post(`${this.routePath}/createuser`,this.userValidation.CreateUpdateUserValidation(),this.CreateUsersAsync.bind(this));
+        this.router.post(`${this.routePath}/updateuser`,this.userValidation.CreateUpdateUserValidation(),this.UpdateUserAsync.bind(this));
         this.router.post(`${this.routePath}/deleteuser`,this.DeleteUserAsync.bind(this));
     }
 

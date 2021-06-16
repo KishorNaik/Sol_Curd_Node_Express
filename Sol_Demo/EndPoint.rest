@@ -7,8 +7,8 @@ POST http://localhost:3000/api/user/createuser
 Content-Type: application/json
 
 {
-    "FirstName":"Eshaan",
-    "LastName":"Naik"
+    "FirstName":"K",
+    "LastName":"N"
 }
 
 ###

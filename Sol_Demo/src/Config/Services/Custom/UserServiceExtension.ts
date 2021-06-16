@@ -8,5 +8,5 @@ import ServiceCollections from "../ServiceCollections";
 ServiceCollections.prototype.AddUserService=(bottleContainer:Bottle):void=>{
     
     bottleContainer.service("userService",UserService,"sqlProvider");
-    bottleContainer.service("userController",UserController,"userService");
+    bottleContainer.service("userController",UserController,"userService","userValidation");
 }

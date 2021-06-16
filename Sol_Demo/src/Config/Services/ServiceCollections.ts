@@ -8,6 +8,7 @@ export default class ServiceCollections{
 
     public AddSqlProvider:any;
     public AddUserService:any;
+    public AddUserValidation:any;
 
     
 }

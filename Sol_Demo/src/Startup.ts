@@ -10,6 +10,7 @@ import "./Config/Services/Custom/UserServiceExtension";
 import "./Config/Middlewares/Custom/ExceptionMiddlewareExtension";
 import "./Config/Middlewares/Custom/LoggerMiddlewareExtension";
 import "./Config/Services/Custom/SqlProviderExtension";
+import "./Config/Services/Custom/UserValidationExtension";
 
 
 export default class Startup{
@@ -38,6 +39,7 @@ export default class Startup{
 
         serviceCollections.AddSqlProvider(this.bottle);
         serviceCollections.AddUserService(this.bottle);
+        serviceCollections.AddUserValidation(this.bottle);
 
         return this;
     }

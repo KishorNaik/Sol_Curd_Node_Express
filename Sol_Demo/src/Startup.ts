@@ -3,14 +3,20 @@ import Bottle from "bottlejs";
 import BaseController from "./Lib/BaseControllers/BaseController";
 import ServiceCollections from "./Config/Services/ServiceCollections";
 import MiddlewaresCollections from "./Config/Middlewares/MiddlewaresCollections";
+import { IConfiguration } from "./Lib/ConfigurationSettings/Configuration";
 
-// Extension of Service & Middlewares
+// Extension of Middlewares
 import "./Config/Middlewares/Custom/JsonMiddlewaresExtensions";
-import "./Config/Services/Custom/UserServiceExtension";
 import "./Config/Middlewares/Custom/ExceptionMiddlewareExtension";
 import "./Config/Middlewares/Custom/LoggerMiddlewareExtension";
-import "./Config/Services/Custom/SqlProviderExtension";
+import "./Config/Middlewares/Custom/CorsMiddlewareExtension";
+
+// Extension of Service
+import "./Config/Services/Custom/ConfigurationServiceExtension";
+import "./Config/Services/Custom/UserServiceExtension";
+import "./Config/Services/Custom/SqlProviderServiceExtension";
 import "./Config/Services/Custom/UserValidationExtension";
+
 
 
 export default class Startup{
@@ -30,13 +36,15 @@ export default class Startup{
         this.middlewareCollection=middlewareCollections;
 
         middlewareCollections.AddJsonMiddleware(this.app);
-        middlewareCollections.AddLogerMiddleware(this.app);        
+        middlewareCollections.AddLogerMiddleware(this.app);     
+        middlewareCollections.AddCorsMiddleware(this.app);   
 
         return this;
     }
 
     public ConfigServices(serviceCollections:ServiceCollections):Startup{
 
+        serviceCollections.AddConfiguration(this.bottle);
         serviceCollections.AddSqlProvider(this.bottle);
         serviceCollections.AddUserService(this.bottle);
         serviceCollections.AddUserValidation(this.bottle);
@@ -60,7 +68,22 @@ export default class Startup{
         return this
     }
 
-    public Listen(port:Number){
+    public Listen(){
+
+        let port:number=undefined;
+
+        console.log(process.env.NODE_ENV);
+
+        if(process.env.NODE_ENV==='development')
+        {
+            port=(this.bottle.container.configurations as IConfiguration).AppSettingConfig.Development.Port;
+        }
+        else if(process.env.NODE_ENV==="production")
+        {
+            port=(this.bottle.container.configurations as IConfiguration).AppSettingConfig.Production.Port;
+        }
+
+
         this.app.listen(port,()=>{
             console.log(`App listening on the port ${port}`);
         });

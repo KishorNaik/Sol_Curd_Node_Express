@@ -34,11 +34,11 @@ npm install --save-dev cors @types/cors
  // Validation
  npm install --save-dev express-validator
 
-
-
 // Sql and Linq
 npm install --save-dev mssql msnodesqlv8 linq @types/mssql
 
+// Remove null property from Javascript Object.
+npm install --save-dev clean-deep
 
 Step 3:
 Initialize TypeScript in Node.js, it will create tsconfig.json file

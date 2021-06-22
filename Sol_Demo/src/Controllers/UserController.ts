@@ -5,6 +5,7 @@ import UserModel from "../Models/UserModel";
 import { IUserService } from "../Services/UserService";
 import { IUserValidation } from "../Validations/UserValidation";
 import { check,ValidationChain,validationResult } from "express-validator";
+import cleanDeep from "clean-deep";
 
 export default class UserController extends BaseController{
     
@@ -36,6 +37,10 @@ export default class UserController extends BaseController{
          {
             let userList:UserModel[]=await this.userService.GetAllUsersAsync();
             if(userList==null) throw new Error("Hello");
+
+            // remove null property
+            userList=cleanDeep(userList);
+
             response.status(200).json(userList);
          }
          catch(ex)

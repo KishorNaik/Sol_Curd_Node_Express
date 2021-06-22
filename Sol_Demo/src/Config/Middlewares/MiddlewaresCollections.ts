@@ -8,5 +8,6 @@ export default class MiddlewaresCollections{
     public AddJsonMiddleware: any;
     public AddExceptionMiddleware:any;
     public AddLogerMiddleware:any;
+    public AddCorsMiddleware:any;
 }
 

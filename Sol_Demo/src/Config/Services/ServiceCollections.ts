@@ -6,6 +6,7 @@ export default class ServiceCollections{
         console.log("Service Collection");
     }
 
+    public AddConfiguration:any;
     public AddSqlProvider:any;
     public AddUserService:any;
     public AddUserValidation:any;

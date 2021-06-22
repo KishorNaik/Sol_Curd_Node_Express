@@ -1,6 +1,5 @@
 
 import mssql, { ConnectionPool } from "mssql/msnodesqlv8";
-import { sqlConfig } from "../Config/SqlConfig/SqlConfig";
 import { ISqlProvider } from "../Lib/SqlProvider/SqlProvider";
 import UserModel from "../Models/UserModel";
 import UserServiceAbstract from "./UserServiceAbstract";
@@ -27,7 +26,7 @@ export class UserService extends UserServiceAbstract implements IUserService{
     public async CreateUserAsync(userModel: UserModel): Promise<string> {
        try
        {
-            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync(sqlConfig);
+            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync();
 
             let request:mssql.Request=await super.SetParameterAsync(pool.request(),"AddUser",userModel);
 
@@ -52,7 +51,7 @@ export class UserService extends UserServiceAbstract implements IUserService{
     public async UpdateUserAsync(userModel: UserModel): Promise<boolean> {
         try
        {
-            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync(sqlConfig);
+            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync();
 
             let request:mssql.Request=await super.SetParameterAsync(pool.request(),"UpdateUser",userModel);
 
@@ -76,7 +75,7 @@ export class UserService extends UserServiceAbstract implements IUserService{
     public async DeleteUserAsync(userModel: UserModel): Promise<boolean> {
         try
        {
-            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync(sqlConfig);
+            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync();
 
             let request:mssql.Request=await super.SetParameterAsync(pool.request(),"DeleteUser",userModel);
 
@@ -101,7 +100,7 @@ export class UserService extends UserServiceAbstract implements IUserService{
         try
         {
         
-            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync(sqlConfig);
+            let pool:mssql.ConnectionPool=await this.sqlProvider.OpenSqlConnectionAsync();
         
             let request:mssql.Request=await super.GetParameterAsync(pool.request(),"GetAllUsers");
 

@@ -25,6 +25,17 @@ install required Dependencies
 // DI
  npm install --save-dev bottlejs
 
+ // Environment
+ npm install --save-dev dotenv
+
+// Cors
+npm install --save-dev cors @types/cors
+
+ // Validation
+ npm install --save-dev express-validator
+
+
+
 // Sql and Linq
 npm install --save-dev mssql msnodesqlv8 linq @types/mssql
 
